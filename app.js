@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = 3000;
 
-require('./api/config/db');
+require('./config/db');
 
 var cors = require('cors');
 app.use(cors({ origin: true, credentials: true }));
@@ -11,11 +11,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(port, () => {
-    console.log(`App listening at Port: ${port}`);
-});
-
-app.use('/api/', require('./api/routes/index')(express));
+app.use('/api/', require('./routes/index')(express));
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
@@ -25,4 +21,6 @@ app.use(function (err, req, res, next) {
     });
 });
 
-module.exports = app;
+app.listen(port, () => {
+    console.log(`App listening at Port: ${port}`);
+});

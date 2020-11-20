@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 const status = require('../utils/status');
 const { success, failed } = require('../utils/response');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const salt = 10;
 const jwt = require('jsonwebtoken');
 const jwtSecret = 'BigCommerce@123';
