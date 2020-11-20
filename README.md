@@ -1,47 +1,27 @@
-# Mean Stack App for BigCommerce
+# Frontend
 
-This is a basic BigCommerce app with two screens, a catalog summary view and list of orders that can be cancelled, built using Mean Stack technologies. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
-It's meant to fast track your ability to take a concept for an app to something usable within the BigCommerce control panel. A live store can install this app while it runs locally.
+## Development server
 
-A walkthrough going over the steps taken to produce this app, along with the steps required to create the app in BigCommerce, can be read [here](not_available_yet).
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Installation
+## Code scaffolding
 
-Before jumping in, you'll want to make sure you have the system requirements met:
-- Mongo ([Installation Guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/))
-- Node ([Installation Guide](https://nodejs.org/es/download/))
-- Express ([Installation Guide](https://expressjs.com/en/starter/installing.html))
-- Angular ([Installation Guide](https://cli.angular.io/))
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-To install NodeJS/ Angular dependancies:
+## Build
 
-```bash
-npm install
-```
-To test on a BigCommerce store, you can create a free trial on bigcommerce.com or request a free sandbox store by [signing up to be a tech partner](https://www.bigcommerce.com/partners/).
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Usage
-To compile JS assets:
-```bash
-npm run dev
-```
-After compiling the app should be reachable at the site you are hosting the app on locally.
+## Running unit tests
 
-When running the app outside of BigCommerce, setting the follow environment variable will cause the app to use the local API credential (also in the .env file):
-```
-APP_ENV=local
-``` 
-Likewise, setting it to production will use only the credentials received during the OAuth handshake when the app is install on the BigCommerce store:
-```
-APP_ENV=production
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Running end-to-end tests
 
-## License
-MIT
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Further help
 
-To run it: npm run build, then npm run serve
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
