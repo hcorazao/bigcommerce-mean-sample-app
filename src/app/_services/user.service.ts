@@ -10,7 +10,7 @@ import { StringConst } from '../_helpers/string-constant';
 export class UserService {
 
   private apiUrl = environment.apiUrl;
-  
+
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
