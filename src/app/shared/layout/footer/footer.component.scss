@@ -1,0 +1,35 @@
+footer.footer-section {
+    float: left;
+    width: 100%;
+}
+footer.footer-section h1{
+	font-family:'Gotham Condensed';
+	font-size: 1.17647rem;
+    margin-bottom: .94118rem;
+}
+footer.footer-section ul.list-inline li {
+    font-size: .82353rem;
+    font-weight: 400;
+    line-height: 1rem;
+    font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
+    margin-bottom: 0.5rem;
+}
+footer.footer-section .footer-column {
+    margin-bottom: 3rem;
+}
+footer.footer-section .footer-column ul li a:hover,footer.footer-section .footer-btmsection ul li a:hover{
+	color:#AFB4BE !important;
+}
+footer.footer-section .footer-btmsection ul li {
+    padding-left: 1rem;
+}
+footer.footer-section .footer-btmsection ul li p,footer.footer-section .copyright a {
+    font-size: .70588rem;
+    line-height: 1.47059rem;
+}
+footer.footer-section .copyright a {
+    color: #8E919C !important;
+}
+footer#footer {
+    background: #000;
+}
