@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FreeTrialComponent } from './free-trial/free-trial.component';
 import { HomeComponent } from './home/home.component';
 
 
@@ -10,9 +11,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    data: { title: 'Auth Module' },
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+  },
+  {
+    path: 'essentials/free-trial',
+    component: FreeTrialComponent
   }
 ];
 

@@ -15,7 +15,7 @@ export class UserService {
 
   login(data: any): Observable<any> {
     if (data) {
-      return this.http.post(this.apiUrl + '/login', data);
+      return this.http.post(this.apiUrl + '/auth/login', data);
     } else {
       return new Observable((observer: Observer<any>) => observer.error(StringConst.INVALID_INFORMATION));
     }
@@ -23,7 +23,7 @@ export class UserService {
 
   signup(data: any): Observable<any> {
     if (data) {
-      return this.http.post(this.apiUrl + '/signup', data);
+      return this.http.post(this.apiUrl + '/auth/register', data);
     } else {
       return new Observable((observer: Observer<any>) => observer.error(StringConst.INVALID_INFORMATION));
     }

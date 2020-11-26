@@ -1,35 +1,46 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Users = new mongoose.Schema({
-    first_name: {
+const mongoose = require('mongoose');
+const validator = require('validator');
+
+const Users = new mongoose.Schema({ 
+    firstName: {
         type: String,
         required: true,
         default: ''
     },
-    last_name: {
+    lastName: {
         type: String,
         required: true,
         default: ''
     },
     email: {
-        type: String,
-        required: true,
-        default: ''
+        type: String, 
+        trim: true, 
+        required: true, 
+        unique: true, 
+        validator: {
+            validator: validator.isEmail,
+            message: `{value} is not a valid email`
+        }
     },
     password: {
         type: String,
         required: true,
         default: ''
     },
-    phone: {
+    businessSize: {
+        type: String,
+        require: true,
+        default: ''
+    },
+    otp: {
         type: Number,
-        required: true,
         default: ''
     }
 }, {
     timestamps: true
 });
 
-var Users = mongoose.model('Users', Users);
-module.exports = Users;
+const UsersModel = mongoose.model('Users', Users);
+module.exports = UsersModel;

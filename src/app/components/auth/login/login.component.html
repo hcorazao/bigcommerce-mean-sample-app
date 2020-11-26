@@ -4,35 +4,47 @@
 			<div class="col-xs-12 col-sm-6 col-lg-6 col-xl-6 text-center custom-bg-img">
 				<div class="lt-form-section">
 					<h1>Boost store traffic and conversion with Growth Services</h1>
-					<p class="mt-2">Our in-house experts will work one-on-one with you to improve your SEO and conversion rates. </p>
+					<p class="mt-2">Our in-house experts will work one-on-one with you to improve your SEO and
+						conversion rates. </p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-lg-6 col-xl-6 text-center bg-black">
 				<div class="rt-form-section">
 					<img src="../../../../assets/images/footer-logo.svg" alt="footer-logo">
 
-					 <form action="/action_page.php" class="login-form mt-5 text-center">
-					 	<h1 class="text-white">Log in to your store</h1>
-   
-				      	<div class="custom-input-section mb-2">
-				        	<input type="text" class="form-control" id="email" placeholder="Email" name="email">
-				     	</div>
-				     	<div class="custom-input-section  mb-2">
-				        	<input type="password" class="form-control" placeholder="Password" name="pswd">
-				        	<span class="forgot-pass">Forgot?</span>
-				      	</div>
+					<form [formGroup]="loginForm" (submit)="onSubmit()" class="login-form mt-5 text-center">
+						<h1 class="text-white">Log in to your store</h1>
 
-   			 			<button type="submit" class="btn btn-primary custom-login-btn text-uppercase">Log In</button>
- 			 		</form>     
+						<div class="custom-input-section mb-2">
+							<input type="text" class="form-control" placeholder="Email" formControlName="email"
+								[ngClass]="{'is-invalid': loginSubmitted && l.email.errors }">
+							<div *ngIf="loginSubmitted && l.email.errors" class="invalid-feedback">
+								<div *ngIf="l.email.errors.required">Email is required</div>
+								<div *ngIf="l.email.errors.email">Email must be a valid email address</div>
+							</div>
+						</div>
+						<div class="custom-input-section  mb-2">
+							<input type="password" class="form-control" placeholder="Password" minlength="8"
+								formControlName="password"
+								[ngClass]="{ 'is-invalid': loginSubmitted && l.password.errors }">
+							<div *ngIf="loginSubmitted && l.password.errors" class="invalid-feedback">
+								<div *ngIf="l.password.errors.required">Password is required</div>
+								<div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+							</div>
+							<span class="forgot-pass">Forgot?</span>
+						</div>
 
-		 			<div class="form-btm-section mt-2 mb-2">
-		 			 	<div class="lt-sec">
-		 			 		<a href="#" class="text-white">Log in with SSO</a>
-		 			 	</div>
-		 			 	<div class="rt-sec">
-		 			 		<a href="#" class="text-white">Get Started</a>
-		 			 	</div>
-		 		 	</div>
+						<button type="submit" class="btn btn-primary custom-login-btn text-uppercase">Log In</button>
+					</form>
+
+					<div class="form-btm-section mt-2 mb-2">
+						<div class="lt-sec">
+							<a href="#" class="text-white">Log in with SSO</a>
+						</div>
+						<div class="rt-sec">
+							<a routerLink="/essentials/free-trial" class="text-white">Get Started</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

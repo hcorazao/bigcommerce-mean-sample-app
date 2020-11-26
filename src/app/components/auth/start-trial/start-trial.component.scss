@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'Gotham Condensed';
+    src: url('../../../../assets/fonts/GothamCondensed-Light.woff2') format('woff2'),
+        url('../../../../assets/fonts/GothamCondensed-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham Condensed';
+    src: url('../../../../assets/fonts/GothamCondensed-Medium.woff2') format('woff2'),
+         url('../../../../assets/fonts/GothamCondensed-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham Condensed';
+    src: url('../../../../assets/fonts/GothamCondensed-Bold.woff2') format('woff2'),
+        url('../../../../assets/fonts/GothamCondensed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham Condensed';
+    src: url('../../../../assets/fonts/GothamCondensed-Book.woff2') format('woff2'),
+        url('../../../../assets/fonts/GothamCondensed-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    font-family:"Source Sans Pro",Helvetica,Arial,sans-serif;;
+}
+a,a:hover{text-decoration:none;}
+.container-fluid{padding:0;}
+img{max-width:100%;}
+.mt-100{margin-top:100px;}
+.pt-100{padding-top:100px;}
+.pb-100{padding-bottom:100px;}
+.mt-50{margin-top:50px;}
+
+.green-bg{
+    background:#208831;
+}
+.promotion p{
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
+section.start-trial-form h1 {
+    font-size: 2rem;
+    line-height: 2.64706rem;
+}
+form.promotion-form {
+    width: 50%;
+   
+}
+form.promotion-form input,form.promotion-form .form-field select {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius:2px;
+    text-align:left;
+    color:#777777;
+}
+form.promotion-form input:focus,form.promotion-form .form-field select:focus {
+    outline-color:#0D52FF;
+}
+button.custom-createbtn {
+    background: #0D52FF;
+    border: none;
+    padding: 15px;
+    border-radius:6px;
+    margin:0;
+    width: auto !important;
+    float: left;
+
+}
+button.custom-createbtn:hover{
+    background: #121118;
+}
+button.custom-createbtn:hover a{
+    color:#fff;
+}
+button.custom-createbtn a {
+    letter-spacing: .05882rem;
+    font-weight:500;
+}
+form.promotion-form .create-store button {
+    width: 100%;
+    margin: 20px auto 5px auto;
+    display: block;
+    float: none;
+}
+form.promotion-form a.link {
+    border-bottom: 1px solid #0D52FF;
+}
+
+@media screen and (max-width:991px){
+    form.promotion-form {
+        width: 80%;
+    }
+}
