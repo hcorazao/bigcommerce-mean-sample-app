@@ -1,0 +1,82 @@
+.verification-popup{
+    height: auto;
+    background: #F6F7FC;
+}
+.verification-inner h1 {
+	font-size: 1.6rem;
+	line-height: 2rem;
+}
+.verification-inner input {
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    font-size: 0.8rem;
+    width: 100%;
+    color: #777777;
+}
+.veri-btm-sec a.verify-btn {
+    background: #007bff;
+    color: #fff;
+    padding: 5px 15px;
+    margin: 0 15px;
+}
+.veri-btm-sec p{color:#007bff;}
+.verification-inner {
+    padding: 0;
+    box-shadow: 0 0 10px #aaa;
+    padding: 15px 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 360px;
+    background:#ffffff;
+    margin:30px 0 !important;
+}
+.custom-font-weight{
+    font-weight:500;
+}
+.verification-ftr ul li {
+    padding: 0 2rem;
+}
+.top-imgs ul li {
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: 50px;
+    overflow: hidden;
+    background:#ffffff;
+}
+.top-imgs ul li img {
+    width: 60%;
+    margin:15px;
+}
+.top-imgs ul li:first-child {
+    margin: 0 -15px 0 0;
+}
+.top-imgs ul {
+    display: inline-block;
+}
+a{text-decoration:none;}
+/*-----Header-css-----*/
+.verification-header-signup ul li {
+    float: left;
+    margin-right: 30px;
+    padding:10px 15px;
+}
+.verification-header-signup ul li:hover {
+background-color: #F0F3FF;
+color: #3C64F4;
+}
+header.header.verification-header {
+    box-shadow: rgba(49,52,64,0.2) 0 2px 12px;
+    height: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom:1px solid #d9dce9;
+}

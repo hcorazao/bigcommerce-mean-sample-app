@@ -1,4 +1,4 @@
-<div class="start-trial-logo d-flex justify-content-center mt-5">
+<div class="start-trial-logo d-flex justify-content-center mt-3">
     <img src="../../../../assets/images/logo.svg" alt="logo">
 </div>
 <div class="promotion mt-3">
@@ -11,56 +11,90 @@
         <p class="text-center">Start your free 15-day trial, no credit card required.</p>
     </div>
 
-    <form class="promotion-form pt-4 m-auto d-flex justify-content-center">
+    <form [formGroup]="signupForm" (submit)="onSubmit()"
+        class="promotion-form pt-4 m-auto d-flex justify-content-center">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-lg-6">
                 <div class="form-field">
-                    <input type="text" matInput placeholder="First Name">
+                    <input type="text" placeholder="First Name" formControlName="firstName"
+                        [ngClass]="{ 'is-invalid': signupSubmitted && f.firstName.errors }">
+                    <div *ngIf="signupSubmitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-lg-6">
                 <div class="form-field">
-                    <input type="text" matInput placeholder="Last Name">
+                    <input type="text" placeholder="Last Name" formControlName="lastName"
+                        [ngClass]="{ 'is-invalid': signupSubmitted && f.lastName.errors }">
+                    <div *ngIf="signupSubmitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-lg-12">
                 <div class="form-field">
-                    <input type="Email" matInput placeholder="Email Addres">
+                    <input class="input-box" placeholder="Email Address" type="text" formControlName="email"
+                        [ngClass]="{ 'is-invalid': signupSubmitted && f.email.errors }" />
+                    <div *ngIf="signupSubmitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-lg-12">
                 <div class="form-field">
-                    <input type="password" matInput placeholder="Password">
+                    <input type="password" class="input-box" placeholder="Password" formControlName="password"
+                        minlength="8" [ngClass]="{ 'is-invalid': signupSubmitted && f.password.errors }" />
+                    <div *ngIf="signupSubmitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+
+                <div class="form-field">
+                    <input type="text" placeholder="Store name (You can change this at any time)"
+                        formControlName="storeName" [ngClass]="{ 'is-invalid': signupSubmitted && f.storeName.errors }">
+                    <div *ngIf="signupSubmitted && f.storeName.errors" class="invalid-feedback">
+                        <div *ngIf="f.storeName.errors.required">Store Name is required</div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-lg-12">
                 <div class="form-field">
-                    <input type="text" matInput placeholder="Store name (You can change this at any time)">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <div class="form-field">
-                    <select id="gender1"> What size is your online business?
-                        <option>I haven't started selling yet: no revenue</option>
-                        <option>Just starting out: less than $50k revenue</option>
-                        <option>Building a business: $50k–250k revenue</option>
-                        <option>Growing business: $250k–1M revenue</option>
-                        <option>Maturing business: $1M–20M revenue</option>
-                        <option>Established business: $20M–100M revenue</option>
-                        <option>Enterprise: more than $100M revenue</option>
-                        <option>I'm not sure</option>
-                        
-                    </select> 
+                    <select formControlName="businessSize"
+                        [ngClass]="{ 'is-invalid': signupSubmitted && f.businessSize.errors }">
+                        <option selected="selected" value="">What size is your online business?</option>
+                        <option value="I haven't started selling yet: no revenue">I haven't started selling yet: no
+                            revenue</option>
+                        <option value="Just starting out: less than $50k revenue">Just starting out: less than $50k
+                            revenue</option>
+                        <option value="Building a business: $50k–250k revenue">Building a business: $50k–250k revenue
+                        </option>
+                        <option value="Growing business: $250k–1M revenue">Growing business: $250k–1M revenue</option>
+                        <option value="Maturing business: $1M–20M revenue">Maturing business: $1M–20M revenue</option>
+                        <option value="Established business: $20M–100M revenue">Established business: $20M–100M revenue
+                        </option>
+                        <option value="Enterprise: more than $100M revenue">Enterprise: more than $100M revenue</option>
+                        <option value="I'm not sure">I'm not sure</option>
+                    </select>
+                    <div *ngIf="signupSubmitted && f.businessSize.errors" class="invalid-feedback">
+                        <div *ngIf="f.businessSize.errors.required">Business Size is required</div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-12 w-100 m-auto text-center create-store">
-                <button _ngcontent-spu-c78="" class="custom-createbtn essential-btn w-100 text-left"><a _ngcontent-spu-c78="" routerlink="/start-a-trial" class="text-white text-uppercase pr-3 pl-3" ng-reflect-router-link="/start-a-trial" href="/start-a-trial">Create my store</a></button>
-                <p class="text-center pt-3">By providing your email, you are agreeing to our <a class="link">terms of service.</a></p>
+                <button type="submit" class="custom-createbtn essential-btn w-100 text-left"><a
+                        class="text-white text-uppercase pr-3 pl-3">Create my store</a></button>
+                <p class="text-center pt-3">By providing your email, you are agreeing to our <a class="link">terms of
+                        service.</a></p>
             </div>
         </div>
     </form>

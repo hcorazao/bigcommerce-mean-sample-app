@@ -19,7 +19,8 @@ async function saveUser(payload) {
         firstName,
         lastName,
         email,
-        password
+        password,
+        businessSize
     });
 
     return userData;

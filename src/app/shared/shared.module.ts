@@ -8,9 +8,13 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EnterpriseHeaderComponent } from './layout/enterprise-header/enterprise-header.component';
+import { EnterpriseFooterComponent } from './layout/enterprise-footer/enterprise-footer.component';
+import { EssentialsFooterComponent } from './layout/essentials-footer/essentials-footer.component';
+import { EssentialsHeaderComponent } from './layout/essentials-header/essentials-header.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, EnterpriseHeaderComponent, EnterpriseFooterComponent, EssentialsFooterComponent, EssentialsHeaderComponent],
   imports: [
     CommonModule,
     FormsModule,
