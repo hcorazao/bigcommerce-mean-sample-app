@@ -29,14 +29,22 @@
         <h1 class="w-100 text-center pb-4 m-0">2-Step Verification</h1>
         <p class="w-100 text-center mt-1">Enter the verification code sent to</p>
         <p class="w-100 text-center m-0 custom-font-weight">xyz123@gmail.com</p>
-        <div class="form-field mt-5">
-            <label class="verfication-label text-left w-100 custom-font-weight">Verification Code</label>
-            <input type="text" class="verification-input" placeholder="Enter Code">
-        </div>
-        <div class="veri-btm-sec mt-3 d-flex flex-wrap justify-content-center align-items-center">
-            <p class="m-0">Where is my code?</p>
-            <a href="" class="verify-btn">Verify</a>
-        </div>
+
+        <form [formGroup]="deviceVerificationForm" (submit)="onSubmit()">
+            
+            <div class="form-field mt-5">
+                <label class="verfication-label text-left w-100 custom-font-weight">Verification Code</label>
+                <input type="number" class="verification-input" placeholder="Enter Code" formControlName="otp"
+                [ngClass]="{'is-invalid': deviceSubmitted && d.otp.errors }">
+                <div *ngIf="deviceSubmitted && d.otp.errors" class="invalid-feedback">
+                    <div *ngIf="d.otp.errors.required">Code is required</div>
+                </div>
+            </div>
+            <div class="veri-btm-sec mt-3 d-flex flex-wrap justify-content-center align-items-center">
+                <p class="m-0">Where is my code?</p>
+                <button type="submit" class="verify-btn">Verify</button>
+            </div>
+        </form>
     </div>
     <div class="verification-ftr m-auto w-100">
         <ul class="list-inline m-0 d-flex flex-wrap justify-content-center">

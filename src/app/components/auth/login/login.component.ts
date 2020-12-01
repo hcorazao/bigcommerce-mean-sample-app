@@ -14,6 +14,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginSubmitted = false;
   loginData: any;
+  ssoLoginForm: FormGroup;
+  ssoSubmitted = false;
+  ssoData: any;
+  isBCLoginForm: boolean = false;
+  isSSOLoginForm: boolean = true;
+  loginEmail = "sandeep@gmail.com";
 
   constructor(
     private fb: FormBuilder,
@@ -27,11 +33,17 @@ export class LoginComponent implements OnInit {
       email : ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
+
+    this.ssoLoginForm = this.fb.group({
+      email : ['', [Validators.required, Validators.email]]
+    });
   }
 
   get l() { return this.loginForm.controls; }
 
-  onSubmit() {
+  get s() { return this.ssoLoginForm.controls; }
+
+  onSubmitLogin() {
     this.loginSubmitted = false;
     if (this.loginForm.invalid) {
       this.loginSubmitted = true;
@@ -47,6 +59,34 @@ export class LoginComponent implements OnInit {
          }
         });
     }
+  }
+
+  onSubmitSSOLogin() {
+    this.ssoSubmitted = false;
+    if (this.ssoLoginForm.invalid) {
+      this.ssoSubmitted = true;
+      return;
+    } else {
+      this.ssoData = this.ssoLoginForm.value;
+      // this.userService.login(this.loginData)
+        // .subscribe(response => {
+        //  console.log(response);
+         // if (response.statusCode == 200) {
+           // this.toastr.success(response.message);
+         //  this.router.navigate(['device-verification']);
+        // }
+        // });
+    }
+  }
+
+  isSSOLogin() {
+    this.isBCLoginForm = true;
+    this.isSSOLoginForm = false;
+  }
+
+  isBCLogin() {
+    this.isSSOLoginForm = true;
+    this.isBCLoginForm = false;
   }
 
 }

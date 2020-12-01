@@ -30,7 +30,11 @@ async function login(req, res) {
     const payload = req.body;
     try {
         const mail = await sendMail(payload);
-        res.status(200).json(successAction(mail, Message.mailSentSuccessfull));
+        if (mail) {
+            res.status(200).json(successAction(mail, Message.mailSentSuccessfull));
+        } else {
+            res.status(200).json(successAction(mail, Message.systemError));
+        }
     } catch (error) {
         res.status(400).json(failAction(status.FAILURE, error.message));
     }

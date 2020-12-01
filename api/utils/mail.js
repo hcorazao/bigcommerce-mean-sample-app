@@ -46,13 +46,13 @@ async function sendMail(payload) {
         let info = await smtpTransport.sendMail({
             from: 'test.ducktale@gmail.com',
             to: email,
-            subject: "Hello Test",
+            subject: "Login From New Device to BigCommerce",
             html: template(context)
         });
         if (info.messageId) {
             var updateValue = { $set: { otp: otp } };
             let upadateData = await UserModel.updateOne({email: email}, updateValue);
-            return upadateData;
+            return userData;
         }
     }
 }

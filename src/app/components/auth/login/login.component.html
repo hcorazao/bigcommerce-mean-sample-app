@@ -12,37 +12,61 @@
 				<div class="rt-form-section">
 					<img src="../../../../assets/images/footer-logo.svg" alt="footer-logo">
 
-					<form [formGroup]="loginForm" (submit)="onSubmit()" class="login-form mt-5 text-center">
-						<h1 class="text-white">Log in to your store</h1>
-
-						<div class="custom-input-section mb-2">
-							<input type="text" class="form-control" placeholder="Email" formControlName="email"
-								[ngClass]="{'is-invalid': loginSubmitted && l.email.errors }">
-							<div *ngIf="loginSubmitted && l.email.errors" class="invalid-feedback">
-								<div *ngIf="l.email.errors.required">Email is required</div>
-								<div *ngIf="l.email.errors.email">Email must be a valid email address</div>
+					<div [hidden]="isBCLoginForm">
+						<form [formGroup]="loginForm" (submit)="onSubmitLogin()" class="login-form mt-5 text-center">
+							<h1 class="text-white">Log in to your store</h1>
+	
+							<div class="custom-input-section mb-2">
+								<input type="text" class="form-control" placeholder="Email" formControlName="email"
+									[ngClass]="{'is-invalid': loginSubmitted && l.email.errors }">
+								<div *ngIf="loginSubmitted && l.email.errors" class="invalid-feedback">
+									<div *ngIf="l.email.errors.required">Email is required</div>
+									<div *ngIf="l.email.errors.email">Email must be a valid email address</div>
+								</div>
+							</div>
+							<div class="custom-input-section  mb-2">
+								<input type="password" class="form-control" placeholder="Password" minlength="8"
+									formControlName="password"
+									[ngClass]="{ 'is-invalid': loginSubmitted && l.password.errors }">
+								<div *ngIf="loginSubmitted && l.password.errors" class="invalid-feedback">
+									<div *ngIf="l.password.errors.required">Password is required</div>
+									<div *ngIf="l.password.errors.minlength">Password must be at least 8 characters</div>
+								</div>
+								<span class="forgot-pass"><a routerLink="/auth/recover">Forgot?</a></span>
+							</div>
+	
+							<button type="submit" class="btn btn-primary custom-login-btn text-uppercase">Log In</button>
+						</form>
+						<div class="form-btm-section mt-2 mb-2">
+							<div class="lt-sec">
+								<a href="javascript:void(0)" (click)="isSSOLogin()" class="text-white">Log in with SSO</a>
+							</div>
+							<div class="rt-sec">
+								<a routerLink="/essentials/free-trial" class="text-white">Get Started</a>
 							</div>
 						</div>
-						<div class="custom-input-section  mb-2">
-							<input type="password" class="form-control" placeholder="Password" minlength="8"
-								formControlName="password"
-								[ngClass]="{ 'is-invalid': loginSubmitted && l.password.errors }">
-							<div *ngIf="loginSubmitted && l.password.errors" class="invalid-feedback">
-								<div *ngIf="l.password.errors.required">Password is required</div>
-								<div *ngIf="l.password.errors.minlength">Password must be at least 8 characters</div>
+					</div>
+
+					<div [hidden]="isSSOLoginForm">
+						<form [formGroup]="ssoLoginForm" (submit)="onSubmitSSOLogin()" class="login-form mt-5 text-center">
+							<h1 class="text-white">Log in to your store</h1>
+							<h5 class="text-white">Please use your company email to access your account.</h5>
+	
+							<div class="custom-input-section mb-2">
+								<input type="text" class="form-control" placeholder="Email" formControlName="email"
+									[ngClass]="{'is-invalid': ssoSubmitted && s.email.errors }">
+								<div *ngIf="ssoSubmitted && s.email.errors" class="invalid-feedback">
+									<div *ngIf="s.email.errors.required">Email is required</div>
+									<div *ngIf="s.email.errors.email">Email must be a valid email address</div>
+								</div>
 							</div>
-							<span class="forgot-pass">Forgot?</span>
-						</div>
-
-						<button type="submit" class="btn btn-primary custom-login-btn text-uppercase">Log In</button>
-					</form>
-
-					<div class="form-btm-section mt-2 mb-2">
-						<div class="lt-sec">
-							<a href="#" class="text-white">Log in with SSO</a>
-						</div>
-						<div class="rt-sec">
-							<a routerLink="/essentials/free-trial" class="text-white">Get Started</a>
+	
+							<button type="submit" class="btn btn-primary custom-login-btn text-uppercase">LOG IN WITH SSO</button>
+						</form>
+						<div class="form-btm-section mt-2 mb-2">
+							<div class="lt-sec">
+								<a href="javascript:void(0)" (click)="isBCLogin()" class="text-white">Log in with a BigCommerce account</a>
+							</div>
 						</div>
 					</div>
 				</div>
