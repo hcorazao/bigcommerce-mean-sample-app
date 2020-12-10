@@ -1,6 +1,7 @@
 import React from 'react';
+import { Button } from '@bigcommerce/big-design';
 
-export default class FeelingForm extends React.Component<any> {
+export default class ReactButton extends React.Component<any> {
 
   constructor(props) {
     super(props)
@@ -10,13 +11,12 @@ export default class FeelingForm extends React.Component<any> {
 
   handleSubmit() {
     const { onSubmit } = this.props;
-
     onSubmit();
   }
 
   render() {
     return (
-      <button onClick={() => this.handleSubmit()}>Submit</button>
+      <Button onClick={() => this.handleSubmit()}>Submit</Button>
     );
   }
 }

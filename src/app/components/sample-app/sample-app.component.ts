@@ -3,7 +3,9 @@ import { CommonService } from 'src/app/_services/common.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import FeelingForm from '../react-components/button';
+import Button from '../react-components/button';
+import Tabs from '../react-components/tabs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sample-app',
@@ -20,16 +22,29 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
   storeData: any;
   summaryData: any;
   orderData: any;
+  storeDomain : any;
+  variantCount: any;
+  inventoryCount: any;
+  inventoryValue: any;
+  cancelData: any;
 
   public rootId = 'feeling-form-root';
   private hasViewLoaded = false;
+  activeTab: string = 'summary';
+  items: any[] = [
+    { id: 'summary', title: 'Summary' },
+    { id: 'orderlist', title: 'Order List' },
+  ];
+  that;
 
   constructor(
     private commonService: CommonService,
-    private loader: NgxUiLoaderService
+    private loader: NgxUiLoaderService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
+    this.that = this;
     this.loader.start();
     this.getStore();
     this.getStoreSummary()
@@ -41,6 +56,7 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
         clearInterval(storeInterval);
       }
     }, 1000);
+    // this.cancelOrder(100);
   }
 
   getStore() {
@@ -48,6 +64,7 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
       .subscribe(response => {
         this.storeData = response.data;
         console.log(this.storeData);
+        this.storeDomain = this.storeData.domain;
       }, error => {
         console.log(error);
       });
@@ -58,6 +75,9 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
       .subscribe(response => {
         this.summaryData = response.data.data;
         console.log(this.summaryData);
+        this.variantCount = this.summaryData.variant_count;
+        this.inventoryCount = this.summaryData.inventory_count;
+        this.inventoryValue = this.summaryData.inventory_value;
       }, error => {
         console.log(error);
       });
@@ -73,6 +93,7 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
       });
   }
 
+
   public ngOnChanges() {
     this.renderComponent();
   }
@@ -83,32 +104,47 @@ export class SampleAppComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private renderComponent() {
-    if (!this.hasViewLoaded) {
-      return;
-    }
-
-    const rootId = this.rootId;
-
-    const props = {
-      name,
-      submit: (res: string) => {
-        console.log("Hey this ia test submit event")
+    let reactInterval = setInterval(() => {
+      if (this.summaryData && this.storeData && this.orderData) {
+        if (!this.hasViewLoaded) {
+          return;
+        }
+        const rootId = this.rootId;
+        ReactDOM.render(React.createElement(Tabs, this.getProps()), document.getElementById(rootId));
+        clearInterval(reactInterval);
       }
-    };
-
-    ReactDOM.render(React.createElement(FeelingForm, this.getProps()), document.getElementById(rootId))
-
+      }, 1000);
   }
 
   protected getProps() {
-    const { onSubmit } = this;
+    let { items, storeDomain, variantCount, inventoryCount, inventoryValue, orderData, cancelOrder } = this;
+
     return { 
-      onSubmit
+      items, storeDomain, variantCount, inventoryCount, inventoryValue, orderData, cancelOrder
     }
   }
 
-  onSubmit() {
-    console.log("Call Submit Function");
+  onSubmit(id: any) {
+    console.log("Call Submit Function", id);
   }
 
+  cancelOrder(id: any) {
+    console.log("kljsdf", id);
+    debugger;
+    this.cancelData = { orderId: id };
+    console.log(this.cancelData);
+    this.commonService.cancelOrder(this.cancelData)
+      .subscribe( response => {
+        console.log(response);
+        if (response.statusCode === 200) {
+          this.renderComponent();
+          this.toastr.success(response.message);
+        }
+      }, error => {
+        console.log(error);
+        if (error.statusCode === 400) {
+          this.toastr.error(error.message);
+        }
+      });
+  }
 }
