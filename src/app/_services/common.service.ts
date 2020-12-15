@@ -8,7 +8,7 @@ import { Observable, Observer } from 'rxjs';
 })
 export class CommonService {
 
-  private apiUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl + '/api';
 
   constructor(
     @Inject(HttpClient)
