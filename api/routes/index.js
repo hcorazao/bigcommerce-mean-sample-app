@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (express) {
     const router = express.Router();
     const storeController = require('../controllers/storeController');
