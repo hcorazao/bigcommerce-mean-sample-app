@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const BigCommerce = require("node-bigcommerce");
 const { successAction, failAction } = require("../utils/response");
-const Message = require("../utils/messages");
 const status = require("../utils/status");
-
 /**
  * sandoxes are public on the web by default
  * do not hard-code any credentials here
@@ -36,7 +34,7 @@ router.get("/", (req, res, next) => {
         // res.send(
         //   `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`
         // );
-        res.status(200).json(successAction("", `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`));
+        res.status(200).json(successAction(data, `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`));
       } else {
         // res.send("Authorization Failed");
         res.status(400).json(failAction(status.FAILURE, "Authorization Failed"));

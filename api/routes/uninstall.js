@@ -4,9 +4,9 @@
  * called when the store owner clicks to uninstall the app.
  */
 
-const express = require("express");
-const router = express.Router();
-const BigCommerce = require("node-bigcommerce");
+const express = require("express"),
+  router = express.Router(),
+  BigCommerce = require("node-bigcommerce");
 
 const bigCommerce = new BigCommerce({
   secret: process.env.client_secret, // set in server control panel

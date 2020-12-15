@@ -4,7 +4,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./api/routes');
 const port = process.env.SERVER_PORT;
-const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
@@ -16,10 +15,11 @@ const uninstall = require("./api/routes/uninstall");
 const cors = require('cors');
 app.use(cors({ origin: true, credentials: true }));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(logger("dev"));
 app.use(cookieParser());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // App Routes ============================================+
 app.use("/auth", auth);
 app.use("/load", load);
