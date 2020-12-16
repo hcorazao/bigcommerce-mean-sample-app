@@ -23,11 +23,11 @@ router.get("/", (req, res, next) => {
     // verify request came from BigCommerce
     const data = bigCommerce.verify(req.query["signed_payload"]);
     if (typeof data.user !== "undefined") {
-    //   res.send("Hello World. The time is " + data.timestamp);
-    res.status(200).json(successAction(data, "Hello World. The time is " + data.timestamp));
+      res.send("Hello World. The time is " + data.timestamp);
+      // res.status(200).json(successAction(data, "Hello World. The time is " + data.timestamp));
     }
   } catch (error) {
-    res.status(400).json(failAction(status.FAILURE, error.message));
+    // res.status(400).json(failAction(status.FAILURE, error.message));
   }
 });
 

@@ -31,13 +31,13 @@ router.get("/", (req, res, next) => {
         // ==========================================================+
 
         const storeHash = data.context.split("/")[1];
-        // res.send(
-        //   `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`
-        // );
-        res.status(200).json(successAction(data, `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`));
+        res.send(
+          `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`
+        );
+        // res.status(200).json(successAction(data, `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`));
       } else {
-        // res.send("Authorization Failed");
-        res.status(400).json(failAction(status.FAILURE, "Authorization Failed"));
+        res.send("Authorization Failed");
+        // res.status(400).json(failAction(status.FAILURE, "Authorization Failed"));
       }
     })
     .catch(next);
