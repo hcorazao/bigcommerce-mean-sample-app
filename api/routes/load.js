@@ -1,6 +1,3 @@
-const { successAction, failAction } = require("../utils/response");
-const status = require("../utils/status");
-
 /**
  * /load
  *
@@ -23,11 +20,11 @@ router.get("/", (req, res, next) => {
     // verify request came from BigCommerce
     const data = bigCommerce.verify(req.query["signed_payload"]);
     if (typeof data.user !== "undefined") {
-      res.send("Hello World. The time is " + data.timestamp);
-      // res.status(200).json(successAction(data, "Hello World. The time is " + data.timestamp));
+      // Enter the sandbox url in res.redirect.
+      res.redirect("");
+      // res.send("Hello World. The time is " + data.timestamp);
     }
   } catch (error) {
-    // res.status(400).json(failAction(status.FAILURE, error.message));
   }
 });
 
