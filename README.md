@@ -3,52 +3,54 @@
 ## 1st Step - Angular Setup
 
 To run Angular application on your local system, you need to install below packaegs:
-    a) node js.
-    b) npm.
+
+    1) node js.
+    2) npm.
 
 For Ex. in ubuntu system, to install, open a terminal window and run the following command:
 
-sudo apt install nodejs
-sudo apt install npm
+    1) sudo apt install nodejs
+    2) sudo apt install npm
 
 Link: https://nodejs.org/en/download/package-manager
 
 Verify these are installed and check the installed version:
-nodejs -v
-npm -v
+
+    1) nodejs -v
+    2) npm -v
 
 ### Need to Install the Angular CLI
 
 To install the Angular CLI, run the following command:
 
-npm install -g @angular/cli
+`npm install -g @angular/cli`
 
 ### Clone the repo
 
-git clone https://github.com/hcorazao/bigcommerce-mean-sample-app.git
-cd bigcommerce-mean-sample-app
+    1) git clone https://github.com/hcorazao/bigcommerce-mean-sample-app.git
+    2) cd bigcommerce-mean-sample-app
 
 ### After clonning need to Install npm packages
 
 To Install the `npm` the packages are described in the `package.json`, run the following command:
 
-npm install
+`npm install`
 
 ### Create build
 
 To create build, run the following command:
 
-ng build --prod
+`ng build --prod`
 
 ### After build need to Add keys in .env
 
 To add keys, Create a new .env file in root directory and add these lines:
 
-NODE_ENV=local
-SERVER_PORT=3000
-MEAN_FRONTEND=angular
-BC_LOCAL_ACCESS_TOKEN=#####
-BC_LOCAL_STORE_HASH=#####
+    NODE_ENV=local
+    SERVER_PORT=3000
+    MEAN_FRONTEND=angular
+    BC_LOCAL_ACCESS_TOKEN=#####
+    BC_LOCAL_STORE_HASH=#####
 
 ### Get Keys
 
@@ -99,9 +101,9 @@ Keep this tab open for the next step.
 
 After registering the app, enter the app’s credential’s and auth callback into your sandbox’s [environment variables](https://codesandbox.io/docs/secrets) (codesandbox.io):
 
-callback => https://{{YOUR_FORK}}.sse.codesandbox.io/auth
-client_id => the app’s client ID from the Developer Portal
-client_secret => the app’s client secret from the Developer Portal
+    callback => https://{{YOUR_FORK}}.sse.codesandbox.io/auth
+    client_id => the app’s client ID from the Developer Portal
+    client_secret => the app’s client secret from the Developer Portal
 
 ## 5th Step - To Install the app
 
