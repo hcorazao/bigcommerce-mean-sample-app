@@ -29,10 +29,10 @@ router.get("/", (req, res, next) => {
         // ==========================================================+
 
         const storeHash = data.context.split("/")[1];
-        res.redirect("https://store-"+storeHash+".mybigcommerce.com/manage/marketplace/apps/my-apps");
-        // res.send(
-        //   `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`
-        // );
+        // res.redirect("https://store-"+storeHash+".mybigcommerce.com/manage/marketplace/apps/my-apps");
+        res.send(
+          `Authorization Successful<br><a href="https://store-${storeHash}.mybigcommerce.com/manage/marketplace/apps/my-apps">My Apps</a>`
+        );
       } else {
         res.send("Authorization Failed");
       }

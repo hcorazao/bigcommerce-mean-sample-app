@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
     const data = bigCommerce.verify(req.query["signed_payload"]);
     if (typeof data.user !== "undefined") {
       // Enter the sandbox url in res.redirect.
-      res.redirect("");
+      res.redirect("https://{{YOUR_FORK}}.sse.codesandbox.io");
       // res.send("Hello World. The time is " + data.timestamp);
     }
   } catch (error) {
