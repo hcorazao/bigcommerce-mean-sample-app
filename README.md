@@ -4,8 +4,8 @@
 
 To run Angular application on your local system, you need to install below packaegs:
 
-    1) node js.
-    2) npm.
+    1) NodeJS.
+    2) Npm
 
 For Ex. in ubuntu system, to install, open a terminal window and run the following command:
 
@@ -16,7 +16,7 @@ Link: https://nodejs.org/en/download/package-manager
 
 Verify these are installed and check the installed version:
 
-    1) nodejs -v
+    1) node -v
     2) npm -v
 
 ### Need to Install the Angular CLI
